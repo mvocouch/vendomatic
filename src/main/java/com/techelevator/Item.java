@@ -1,14 +1,14 @@
 package com.techelevator;
 
-public class Items {
+public class Item {
 
     private String locationSlot;
     private String name;
     private double price;
     private String itemType;
-    private int quantity = 5;
+    private int quantity;
 
-    public Items(String locationSlot, String name, double price, String itemType, int quantity) {
+    public Item(String locationSlot, String name, double price, String itemType, int quantity) {
         this.locationSlot = locationSlot;
         this.name = name;
         this.price = price;
@@ -16,7 +16,7 @@ public class Items {
         this.quantity = quantity;
     }
 
-    public Items(){
+    public Item(){
     }
 
     public String getName() {

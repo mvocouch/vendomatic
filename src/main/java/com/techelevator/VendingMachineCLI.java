@@ -28,6 +28,7 @@ public class VendingMachineCLI {
 
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);
+		MoneyHandler moneyHandler = new MoneyHandler();
 		VendingMachineCLI cli = new VendingMachineCLI(menu);
 		cli.run();
 	}

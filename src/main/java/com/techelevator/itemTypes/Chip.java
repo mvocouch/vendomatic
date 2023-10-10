@@ -1,8 +1,8 @@
 package com.techelevator.itemTypes;
 
-import com.techelevator.Items;
+import com.techelevator.Item;
 
-public class Chip extends Items {
+public class Chip extends Item {
     public Chip(String locationSlot, String name, double price, String itemType, int quantity) {
         super(locationSlot, name, price, itemType, quantity);
     }

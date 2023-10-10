@@ -1,8 +1,8 @@
 package com.techelevator.itemTypes;
 
-import com.techelevator.Items;
+import com.techelevator.Item;
 
-public class Drink extends Items {
+public class Drink extends Item {
     public Drink(String locationSlot, String name, double price, String itemType, int quantity) {
         super(locationSlot, name, price, itemType, quantity);
     }

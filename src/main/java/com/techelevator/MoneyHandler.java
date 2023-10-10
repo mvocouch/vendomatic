@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public class Money {
+public class MoneyHandler {
     private double moneyProvided;
     private double moneyReturned;
 
@@ -12,7 +12,7 @@ public class Money {
     private static final double NICKLE = 0.05;
     private static final double PENNY = 0.01;
 
-    public Money(double moneyProvided) {
+    public MoneyHandler() {
         this.moneyProvided = 0;
 
     }
