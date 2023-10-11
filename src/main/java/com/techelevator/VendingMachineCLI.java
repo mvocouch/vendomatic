@@ -15,7 +15,7 @@ public class VendingMachineCLI {
 	}
 
 	public void run() {
-		AsciiPrinter.printASCII();
+		AsciiPrinter.printASCII("asciitext.txt");
 		while (true) {
 			String choice = (String) vendingMachine.getMenu().getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
