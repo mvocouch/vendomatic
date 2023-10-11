@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import com.techelevator.view.AsciiPrinter;
 import com.techelevator.view.VendingMachine;
 
 public class VendingMachineCLI {
@@ -14,6 +15,7 @@ public class VendingMachineCLI {
 	}
 
 	public void run() {
+		AsciiPrinter.printASCII();
 		while (true) {
 			String choice = (String) vendingMachine.getMenu().getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
