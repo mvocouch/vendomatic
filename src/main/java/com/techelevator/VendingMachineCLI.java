@@ -8,7 +8,7 @@ public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE };
 
-	private VendingMachine vendingMachine = new VendingMachine();
+	private final VendingMachine vendingMachine = new VendingMachine();
 
 	public VendingMachineCLI() {
 	}
@@ -19,7 +19,6 @@ public class VendingMachineCLI {
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				// display vending machine items
-				System.out.println("");
 				vendingMachine.getInventory().displayItems();
 
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
