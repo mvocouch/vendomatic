@@ -1,6 +1,7 @@
-package com.techelevator;
+package com.techelevator.view;
 
-import com.techelevator.view.Menu;
+import com.techelevator.customExceptions.InsufficientBalanceException;
+import com.techelevator.customExceptions.OutOfStockException;
 
 public class VendingMachine {
 
@@ -8,9 +9,9 @@ public class VendingMachine {
     private static final String PURCHASE_MENU_OPTION_SELECT_PRODUCT = "Select Product";
     private static final String PURCHASE_MENU_OPTION_FINISH_TRANSACTION = "Finish Transaction";
     private static final String[] PURCHASE_MENU_OPTIONS = {PURCHASE_MENU_OPTION_FEED_MONEY, PURCHASE_MENU_OPTION_SELECT_PRODUCT, PURCHASE_MENU_OPTION_FINISH_TRANSACTION};
-    private Menu menu;
-    private Inventory inventory;
-    private MoneyHandler moneyHandler;
+    private final Menu menu;
+    private final Inventory inventory;
+    private final MoneyHandler moneyHandler;
 
 
     public VendingMachine() {
@@ -33,7 +34,7 @@ public class VendingMachine {
 
     public void displayPurchaseMenu() {
         while(true){
-            System.out.print(System.lineSeparator() + "Current Money Provided: $" + moneyHandler.doubleToString(moneyHandler.getBalance()) + System.lineSeparator());
+            System.out.print(System.lineSeparator() + "Current Money Provided: $" + MoneyHandler.doubleToString(moneyHandler.getBalance()));
             String choice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
             switch(choice){
                 case PURCHASE_MENU_OPTION_FEED_MONEY:
@@ -42,6 +43,15 @@ public class VendingMachine {
                     break;
                 case PURCHASE_MENU_OPTION_SELECT_PRODUCT:
                     //select a product from list of items
+                    inventory.displayItems();
+                    Item selectedProduct = menu.getProductSelectionFromUserInput(inventory);
+                    try {
+                        double availableBalance = moneyHandler.getBalance();
+                        selectedProduct.dispense(availableBalance);
+                        moneyHandler.subtractFromBalance(selectedProduct.getPrice());
+                    } catch (InsufficientBalanceException | OutOfStockException e){
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case PURCHASE_MENU_OPTION_FINISH_TRANSACTION:
                     //finishes interaction with vending machine

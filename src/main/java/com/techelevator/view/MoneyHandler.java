@@ -1,4 +1,6 @@
-package com.techelevator;
+package com.techelevator.view;
+
+import com.techelevator.customExceptions.InsufficientBalanceException;
 
 import java.text.DecimalFormat;
 
@@ -22,9 +24,6 @@ public class MoneyHandler {
     public double getBalance() {
         return balance;
     }
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
 
     public double getMoneyReturned() {
         return moneyReturned;
@@ -32,10 +31,17 @@ public class MoneyHandler {
     public void setMoneyReturned(double moneyReturned) {
         this.moneyReturned = moneyReturned;
     }
-    public void addToBalance(int dollars){
-        this.balance += dollars;
+    public void addToBalance(int amount){
+        this.balance += amount;
     }
-    public String doubleToString(double money){
+    public void subtractFromBalance(double amount) throws InsufficientBalanceException {
+        if (this.balance - amount >= 0){
+            balance -= amount;
+        } else {
+            throw new InsufficientBalanceException(System.lineSeparator() + "Insufficient balance to purchase selected item.");
+        }
+    };
+    public static String doubleToString(double money){
         return new DecimalFormat("0.00").format(money);
     }
 

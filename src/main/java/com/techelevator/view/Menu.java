@@ -3,6 +3,7 @@ package com.techelevator.view;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -50,6 +51,7 @@ public class Menu {
 		out.print(System.lineSeparator() + "Please choose an option >>> ");
 		out.flush();
 	}
+
 	public int feedMoney() {
 		System.out.print(System.lineSeparator() + "Please feed in your money >>> ");
 		String userInput = in.nextLine();
@@ -58,9 +60,21 @@ public class Menu {
 		try {
 			money = Integer.parseInt(userInput);
 		} catch (NumberFormatException e) {
-			out.println(System.lineSeparator() + "No money has been added to your balance due to an invalid input.");
+			out.println(System.lineSeparator() + "*** " + userInput + " is not a valid option ***" + System.lineSeparator() + "No money has been added to your balance.");
 		}
 
 		return money;
+	}
+
+	public Item getProductSelectionFromUserInput(Inventory inventory){
+		List<String> locationSlots = inventory.getLocationSlots();
+		String productSelection;
+		String userInput;
+
+		System.out.print(System.lineSeparator() + "Select a product by inputting the item's location ID >>> ");
+		userInput = in.nextLine();
+		productSelection = userInput.toUpperCase().trim();
+
+		return inventory.getItem(productSelection);
 	}
 }

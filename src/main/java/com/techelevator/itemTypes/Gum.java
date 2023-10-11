@@ -1,6 +1,6 @@
 package com.techelevator.itemTypes;
 
-import com.techelevator.Item;
+import com.techelevator.view.Item;
 
 public class Gum extends Item {
 

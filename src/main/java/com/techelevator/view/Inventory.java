@@ -1,4 +1,4 @@
-package com.techelevator;
+package com.techelevator.view;
 
 import com.techelevator.itemTypes.Candy;
 import com.techelevator.itemTypes.Chip;
@@ -6,13 +6,9 @@ import com.techelevator.itemTypes.Drink;
 import com.techelevator.itemTypes.Gum;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Inventory {
     private static final int MAXIMUM_QUANTITY = 5;
@@ -20,8 +16,13 @@ public class Inventory {
     public Inventory() {
         csvFileToMap();
     }
-    public SortedMap<String, Item> getInventory() {
-        return inventory;
+
+    public Item getItem(String slotID){
+        return inventory.get(slotID);
+    }
+
+    public List<String> getLocationSlots(){
+        return new ArrayList<>(inventory.keySet());
     }
 
     public void csvFileToMap(){
@@ -58,8 +59,7 @@ public class Inventory {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-    public void increaseItemQuantity(Map<String, Item> inventory, String locationSlot, int quantityToAdd) {
+    } public void increaseItemQuantity(Map<String, Item> inventory, String locationSlot, int quantityToAdd) {
         Item item = inventory.get(locationSlot);
         if (item != null){
             int currentQuantity = item.getQuantity();
@@ -92,7 +92,9 @@ public class Inventory {
             System.out.println("Item with location slot '" + locationSlot + "' not found in inventory.");
         }
     }
+
     public void displayItems(){
+        System.out.print(System.lineSeparator());
         for (Item item: inventory.values()){
             System.out.println(item.getDisplayString());
         }
