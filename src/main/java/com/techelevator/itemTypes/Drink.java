@@ -7,6 +7,8 @@ public class Drink extends Item {
         super(locationSlot, name, price, itemType, quantity);
     }
 
+    public Drink(String[] args, int quantity){ super(args, quantity); }
+
     @Override
     public String getItemType() {
         return super.getItemType();
@@ -14,8 +16,6 @@ public class Drink extends Item {
 
     @Override
     public void displaySound() {
-        if (getItemType().equals("Drink")){
-            System.out.println("Glug Glug, Yum!");
-        }
+        System.out.println("Glug Glug, Yum!");
     }
 }

@@ -2,7 +2,7 @@ package com.techelevator;
 
 import static java.lang.System.out;
 
-public class Item {
+public abstract class Item {
 
     private String locationSlot;
     private String name;
@@ -16,6 +16,13 @@ public class Item {
         this.price = price;
         this.itemType = itemType;
         this.quantity = quantity;
+    }
+
+    public Item(String[] args, int quantity){
+        this.locationSlot = args[0].trim();
+        this.name = args[1].trim();
+        this.price = Double.parseDouble(args[2].trim());
+        this.itemType = args[3].trim();
     }
 
     public Item(){
@@ -56,10 +63,8 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public void displaySound(){
-        String displaySound = "";
-        out.println(displaySound);
-    }
+    public abstract void displaySound();
+
     private void displayMenuOptions(Object[] options) {
         out.println();
         for (int i = 0; i < options.length; i++) {

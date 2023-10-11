@@ -7,15 +7,10 @@ public class Candy extends Item {
         super(locationSlot, name, price, itemType, quantity);
     }
 
-    @Override
-    public String getItemType() {
-        return super.getItemType();
-    }
+    public Candy( String[] args, int quantity){super(args, quantity); }
 
     @Override
     public void displaySound() {
-        if (getItemType().equals("Candy")){
-            System.out.println("Munch Munch, Yum!");
-        }
+        System.out.println("Munch Munch, Yum!");
     }
 }

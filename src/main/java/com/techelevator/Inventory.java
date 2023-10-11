@@ -1,5 +1,10 @@
 package com.techelevator;
 
+import com.techelevator.itemTypes.Candy;
+import com.techelevator.itemTypes.Chip;
+import com.techelevator.itemTypes.Drink;
+import com.techelevator.itemTypes.Gum;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -28,17 +33,28 @@ public class Inventory {
                 String[] parts = line.split("\\|");
                 if (parts.length == 4){
                     String locationSlot = parts[0].trim();
-                    String name = parts[1].trim();
-                    double price = Double.parseDouble(parts[2].trim());
                     String itemType = parts[3].trim();
                     int quantity = MAXIMUM_QUANTITY;
 
-                    Item item = new Item(locationSlot, name, price, itemType, quantity);
+                    Item item = null;
+                    switch(itemType){
+                        case "Candy":
+                            item = new Candy(parts, quantity);
+                            break;
+                        case "Chip":
+                            item = new Chip(parts, quantity);
+                            break;
+                        case "Drink":
+                            item = new Drink(parts, quantity);
+                            break;
+                        case "Gum":
+                            item = new Gum(parts, quantity);
+                            break;
+                    }
+
                     inventory.put(locationSlot,item);
                 }
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -8,15 +8,10 @@ public class Gum extends Item {
         super(locationSlot, name, price, itemType, quantity);
     }
 
-    @Override
-    public String getItemType() {
-        return super.getItemType();
-    }
+    public Gum(String[] parts, int quantity) { super(parts, quantity);}
 
     @Override
     public void displaySound(){
-        if (getItemType().equals("Gum")){
-            System.out.println("Chew Chew, Yum!");
-        }
+        System.out.println("Chew Chew, Yum!");
     }
 }
