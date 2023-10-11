@@ -19,6 +19,7 @@ public class VendingMachineCLI {
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				// display vending machine items
+				System.out.println("");
 				vendingMachine.getInventory().displayItems();
 
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
