@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import static java.lang.System.out;
+
 public class Item {
 
     private String locationSlot;
@@ -56,7 +58,18 @@ public class Item {
 
     public void displaySound(){
         String displaySound = "";
-        System.out.println(displaySound);
+        out.println(displaySound);
     }
+    private void displayMenuOptions(Object[] options) {
+        out.println();
+        for (int i = 0; i < options.length; i++) {
+            int optionNum = i + 1;
+            out.println(optionNum + ") " + options[i]);
+        }
+        out.print(System.lineSeparator() + "Please choose an option >>> ");
+        out.flush();
+    }
+
+    public String getDisplayString() { return locationSlot + " | " + name + " | $ " + price + " | " + itemType; }
 
 }

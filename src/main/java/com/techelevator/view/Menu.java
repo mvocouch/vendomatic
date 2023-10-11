@@ -50,4 +50,17 @@ public class Menu {
 		out.print(System.lineSeparator() + "Please choose an option >>> ");
 		out.flush();
 	}
+	public int feedMoney() {
+		System.out.print(System.lineSeparator() + "Please feed in your money >>> ");
+		String userInput = in.nextLine();
+		int money = 0;
+
+		try {
+			money = Integer.parseInt(userInput);
+		} catch (NumberFormatException e) {
+			out.println(System.lineSeparator() + "No money has been added to your balance due to an invalid input.");
+		}
+
+		return money;
+	}
 }

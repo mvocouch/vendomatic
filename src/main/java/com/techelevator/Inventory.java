@@ -13,16 +13,16 @@ public class Inventory {
     private static final int MAXIMUM_QUANTITY = 5;
     private SortedMap<String, Item> inventory;
     public Inventory() {
-
+        csvFileToMap();
     }
     public SortedMap<String, Item> getInventory() {
         return inventory;
     }
 
-    public static void csvFileToMap(String[] args){
+    public void csvFileToMap(){
         String csvFilePath = "vendingmachine.csv";
         try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))){
-            SortedMap<String, Item> inventory = new TreeMap<>();
+            inventory = new TreeMap<>();
             String line;
             while ((line=br.readLine())!=null){
                 String[] parts = line.split("\\|");
@@ -43,7 +43,7 @@ public class Inventory {
             throw new RuntimeException(e);
         }
     }
-    public static void increaseItemQuantity(Map<String, Item> inventory, String locationSlot, int quantityToAdd) {
+    public void increaseItemQuantity(Map<String, Item> inventory, String locationSlot, int quantityToAdd) {
         Item item = inventory.get(locationSlot);
         if (item != null){
             int currentQuantity = item.getQuantity();
@@ -58,7 +58,7 @@ public class Inventory {
             System.out.println("Item with location slot '" + locationSlot + "' not found in inventory.");
         }
     }
-    public static void decreaseItemQuantity(Map<String, Item> inventory, String locationSlot, int quantityToSubtract) {
+    public void decreaseItemQuantity(Map<String, Item> inventory, String locationSlot, int quantityToSubtract) {
         Item item = inventory.get(locationSlot);
         if (item != null) {
             if (item.getQuantity() != 0) {
@@ -74,6 +74,11 @@ public class Inventory {
             }
         } else {
             System.out.println("Item with location slot '" + locationSlot + "' not found in inventory.");
+        }
+    }
+    public void displayItems(){
+        for (Item item: inventory.values()){
+            System.out.println(item.getDisplayString());
         }
     }
 }

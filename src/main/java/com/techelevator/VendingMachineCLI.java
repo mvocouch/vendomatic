@@ -8,28 +8,28 @@ public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE };
 
-	private Menu menu;
+	private VendingMachine vendingMachine = new VendingMachine();
 
-	public VendingMachineCLI(Menu menu) {
-		this.menu = menu;
+	public VendingMachineCLI() {
 	}
 
 	public void run() {
 		while (true) {
-			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
+			String choice = (String) vendingMachine.getMenu().getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				// display vending machine items
+				vendingMachine.getInventory().displayItems();
+
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase
+				vendingMachine.displayPurchaseMenu();
 			}
 		}
 	}
 
 	public static void main(String[] args) {
-		Menu menu = new Menu(System.in, System.out);
-		MoneyHandler moneyHandler = new MoneyHandler();
-		VendingMachineCLI cli = new VendingMachineCLI(menu);
+		VendingMachineCLI cli = new VendingMachineCLI();
 		cli.run();
 	}
 }

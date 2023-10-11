@@ -1,7 +1,9 @@
 package com.techelevator;
 
+import java.text.DecimalFormat;
+
 public class MoneyHandler {
-    private double moneyProvided;
+    private double balance;
     private double moneyReturned;
 
     private static final double ONE_DOLLAR = 1.00;
@@ -13,15 +15,15 @@ public class MoneyHandler {
     private static final double PENNY = 0.01;
 
     public MoneyHandler() {
-        this.moneyProvided = 0;
+        this.balance = 0;
 
     }
 
-    public double getMoneyProvided() {
-        return moneyProvided;
+    public double getBalance() {
+        return balance;
     }
-    public void setMoneyProvided(double moneyProvided) {
-        this.moneyProvided = moneyProvided;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public double getMoneyReturned() {
@@ -30,8 +32,11 @@ public class MoneyHandler {
     public void setMoneyReturned(double moneyReturned) {
         this.moneyReturned = moneyReturned;
     }
-    public void feedMoney(int dollars){
-        this.moneyProvided += dollars;
+    public void addToBalance(int dollars){
+        this.balance += dollars;
+    }
+    public String doubleToString(double money){
+        return new DecimalFormat("0.00").format(money);
     }
 
     public void transaction(){
