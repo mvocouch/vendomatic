@@ -1,5 +1,6 @@
 package com.techelevator.itemTypes;
 
+import com.techelevator.view.AsciiPrinter;
 import com.techelevator.view.Item;
 
 public class Chip extends Item {
@@ -11,6 +12,7 @@ public class Chip extends Item {
     }
     @Override
     public void displaySound() {
+        AsciiPrinter.printASCII("asciiface.txt", false);
         System.out.println("Crunch Crunch, Yum!");
     }
 }

@@ -1,5 +1,6 @@
 package com.techelevator.itemTypes;
 
+import com.techelevator.view.AsciiPrinter;
 import com.techelevator.view.Item;
 
 public class Drink extends Item {
@@ -16,6 +17,7 @@ public class Drink extends Item {
 
     @Override
     public void displaySound() {
+        AsciiPrinter.printASCII("asciiface.txt", false);
         System.out.println("Glug Glug, Yum!");
     }
 }

@@ -60,7 +60,7 @@ public class Menu {
 		try {
 			money = Integer.parseInt(userInput);
 		} catch (NumberFormatException e) {
-			out.println(System.lineSeparator() + "*** " + userInput + " is not a valid option ***" + System.lineSeparator() + "No money has been added to your balance.");
+			System.out.println(System.lineSeparator() + "*** " + userInput + " is not a valid option ***" + System.lineSeparator() + "No money has been added to your balance.");
 		}
 
 		return money;

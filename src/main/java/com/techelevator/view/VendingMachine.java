@@ -49,6 +49,8 @@ public class VendingMachine {
                         double availableBalance = moneyHandler.getBalance();
                         selectedProduct.dispense(availableBalance);
                         moneyHandler.subtractFromBalance(selectedProduct.getPrice());
+                    } catch (NullPointerException e) {
+                        System.out.println(System.lineSeparator() + "*** Invalid item location ID ***");
                     } catch (InsufficientBalanceException | OutOfStockException e){
                         System.out.println(e.getMessage());
                     }
