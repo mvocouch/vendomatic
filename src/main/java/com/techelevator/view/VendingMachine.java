@@ -34,7 +34,7 @@ public class VendingMachine {
 
     public void displayPurchaseMenu() {
         while(true){
-            System.out.print(System.lineSeparator() + "Current Money Provided: $" + MoneyHandler.doubleToString(moneyHandler.getBalance()));
+            System.out.println(System.lineSeparator() + "Current Money Provided: $" + MoneyHandler.doubleToString(moneyHandler.getBalance()));
             String choice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
             switch(choice){
                 case PURCHASE_MENU_OPTION_FEED_MONEY:

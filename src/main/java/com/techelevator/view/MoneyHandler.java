@@ -38,7 +38,7 @@ public class MoneyHandler {
         if (this.balance - amount >= 0){
             balance -= amount;
         } else {
-            throw new InsufficientBalanceException(System.lineSeparator() + "Insufficient balance to purchase selected item.");
+            throw new InsufficientBalanceException(System.lineSeparator() + "*** Insufficient balance to purchase selected item. ***");
         }
     };
     public static String doubleToString(double money){

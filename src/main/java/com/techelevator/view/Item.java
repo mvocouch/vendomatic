@@ -46,10 +46,12 @@ public abstract class Item {
     public void dispense(double availableBalance) throws OutOfStockException {
         if (quantity - 1 >= 0 & availableBalance >= price){
             quantity -= 1;
-            System.out.println(System.lineSeparator() + "Dispensing " + name + " for $" + MoneyHandler.doubleToString(price));
+            System.out.println(System.lineSeparator() + "Dispensing " + name + " for $" +
+                    MoneyHandler.doubleToString(price));
             displaySound();
+            System.out.println("Your remaining balance is $" + MoneyHandler.doubleToString(availableBalance - price));
         } else if (quantity - 1 < 0) {
-            throw new OutOfStockException(System.lineSeparator() + "The selected product is SOLD OUT.");
+            throw new OutOfStockException(System.lineSeparator() + "*** The selected product is SOLD OUT. ***");
         }
     }
 
