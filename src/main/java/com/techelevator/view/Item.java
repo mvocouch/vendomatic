@@ -49,14 +49,14 @@ public abstract class Item {
             System.out.println(System.lineSeparator() + "Dispensing " + name + " for $" + MoneyHandler.doubleToString(price));
             displaySound();
         } else if (quantity - 1 < 0) {
-            throw new OutOfStockException(System.lineSeparator() + "The selected product is OUT OF STOCK.");
+            throw new OutOfStockException(System.lineSeparator() + "The selected product is SOLD OUT.");
         }
     }
 
     public abstract void displaySound();
 
     public String getDisplayString() {
-        String quantity = this.quantity == 0 ? "OUT OF STOCK" : String.valueOf(this.quantity);
+        String quantity = this.quantity == 0 ? "SOLD OUT" : String.valueOf(this.quantity);
         return locationSlot +
                 " | " + name +
                 " | $" +
