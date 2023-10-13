@@ -18,7 +18,8 @@ public class VendingMachine {
         this.moneyHandler = new MoneyHandler();
         this.inventory = new Inventory();
         this.menu = new Menu(System.in, System.out);
-    }
+
+        }
 
     public Menu getMenu() {
         return menu;
@@ -31,6 +32,8 @@ public class VendingMachine {
     public MoneyHandler getMoneyHandler() {
         return moneyHandler;
     }
+
+
 
     public void displayPurchaseMenu() {
         while(true){

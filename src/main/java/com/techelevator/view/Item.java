@@ -2,6 +2,8 @@ package com.techelevator.view;
 
 import com.techelevator.customExceptions.OutOfStockException;
 
+
+
 public abstract class Item {
 
     private final String locationSlot;
@@ -66,4 +68,6 @@ public abstract class Item {
                 " | " + itemType +
                 " | Stock: " + quantity;
     }
+
+
 }
