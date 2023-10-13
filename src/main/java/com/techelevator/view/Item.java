@@ -45,6 +45,10 @@ public abstract class Item {
         this.quantity = quantity;
     }
 
+    public String getLocationSlot() {
+        return locationSlot;
+    }
+
     public void dispense(double availableBalance) throws OutOfStockException {
         if (quantity - 1 >= 0 & availableBalance >= price){
             quantity -= 1;
@@ -52,6 +56,7 @@ public abstract class Item {
                     MoneyHandler.doubleToString(price));
             displaySound();
             System.out.println("Your remaining balance is $" + MoneyHandler.doubleToString(availableBalance - price));
+
         } else if (quantity - 1 < 0) {
             throw new OutOfStockException(System.lineSeparator() + "*** The selected product is SOLD OUT. ***");
         }
@@ -68,6 +73,7 @@ public abstract class Item {
                 " | " + itemType +
                 " | Stock: " + quantity;
     }
+
 
 
 }

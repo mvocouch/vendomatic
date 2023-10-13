@@ -12,6 +12,7 @@ public class VendingMachine {
     private final Menu menu;
     private final Inventory inventory;
     private final MoneyHandler moneyHandler;
+    Log log = new Log();
 
 
     public VendingMachine() {
@@ -35,14 +36,17 @@ public class VendingMachine {
 
 
 
+
     public void displayPurchaseMenu() {
         while(true){
             System.out.println(System.lineSeparator() + "Current Money Provided: $" + MoneyHandler.doubleToString(moneyHandler.getBalance()));
             String choice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
             switch(choice){
                 case PURCHASE_MENU_OPTION_FEED_MONEY:
+                    double depositAmount = menu.feedMoney();
                     // feed money into the vending machine
                     moneyHandler.addToBalance(menu.feedMoney());
+                    log.logDeposit(depositAmount, moneyHandler.getBalance());
                     break;
                 case PURCHASE_MENU_OPTION_SELECT_PRODUCT:
                     //select a product from list of items
@@ -52,6 +56,7 @@ public class VendingMachine {
                         double availableBalance = moneyHandler.getBalance();
                         selectedProduct.dispense(availableBalance);
                         moneyHandler.subtractFromBalance(selectedProduct.getPrice());
+                        log.logPurchase(selectedProduct.getLocationSlot(), selectedProduct.getName(), selectedProduct.getPrice(), moneyHandler.getBalance());
                     } catch (NullPointerException e) {
                         System.out.println(System.lineSeparator() + "*** Invalid item location ID ***");
                     } catch (InsufficientBalanceException | OutOfStockException e){
