@@ -13,6 +13,6 @@ public class Chip extends Item {
     @Override
     public void displaySound() {
         AsciiPrinter.printASCII("asciiface.txt", false);
-        System.out.println("Crunch Crunch, Yum!");
+        System.out.println(" Crunch Crunch, Yum!");
     }
 }

@@ -1,6 +1,7 @@
 package com.techelevator.view;
 
 import com.techelevator.customExceptions.InsufficientBalanceException;
+import com.techelevator.customExceptions.InvalidFormOfPayment;
 import com.techelevator.customExceptions.OutOfStockException;
 
 public class VendingMachine {
@@ -30,22 +31,19 @@ public class VendingMachine {
         return inventory;
     }
 
-    public MoneyHandler getMoneyHandler() {
-        return moneyHandler;
-    }
-
-
-
-
     public void displayPurchaseMenu() {
         while(true){
             System.out.println(System.lineSeparator() + "Current Money Provided: $" + MoneyHandler.doubleToString(moneyHandler.getBalance()));
             String choice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
             switch(choice){
                 case PURCHASE_MENU_OPTION_FEED_MONEY:
-                    double depositAmount = menu.feedMoney();
                     // feed money into the vending machine
-                    moneyHandler.addToBalance(menu.feedMoney());
+                    int depositAmount = menu.feedMoney();
+                    try {
+                        moneyHandler.addToBalance(depositAmount);
+                    } catch (InvalidFormOfPayment e) {
+                        System.out.println(e.getMessage());
+                    }
                     log.logDeposit(depositAmount, moneyHandler.getBalance());
                     break;
                 case PURCHASE_MENU_OPTION_SELECT_PRODUCT:
@@ -65,7 +63,11 @@ public class VendingMachine {
                     break;
                 case PURCHASE_MENU_OPTION_FINISH_TRANSACTION:
                     //finishes interaction with vending machine
-
+                    try {
+                        moneyHandler.makeChange();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
                     return;
                 default:
                     throw new IllegalArgumentException("A valid choice was not selected.");

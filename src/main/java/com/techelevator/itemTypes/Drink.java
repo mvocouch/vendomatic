@@ -18,6 +18,6 @@ public class Drink extends Item {
     @Override
     public void displaySound() {
         AsciiPrinter.printASCII("asciiface.txt", false);
-        System.out.println("Glug Glug, Yum!");
+        System.out.println(" Glug Glug, Yum!");
     }
 }

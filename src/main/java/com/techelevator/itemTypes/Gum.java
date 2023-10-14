@@ -14,6 +14,6 @@ public class Gum extends Item {
     @Override
     public void displaySound() {
         AsciiPrinter.printASCII("asciiface.txt", false);
-        System.out.println("Chew Chew, Yum!");
+        System.out.println(" Chew Chew, Yum!");
     }
 }

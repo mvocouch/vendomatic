@@ -13,6 +13,6 @@ public class Candy extends Item {
     @Override
     public void displaySound() {
         AsciiPrinter.printASCII("asciiface.txt", false);
-        System.out.println("Munch Munch, Yum!");
+        System.out.println(" Munch Munch, Yum!");
     }
 }
