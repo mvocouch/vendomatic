@@ -47,7 +47,7 @@ public class Log {
         try(PrintWriter writer = new PrintWriter(new FileWriter(logFilePath,true))){
             LocalDateTime timeStamp = LocalDateTime.now();
 
-            String changeGivenInfo = timeStamp + " $" + MoneyHandler.doubleToString(changeGiven) + " $" + MoneyHandler.doubleToString(remainingBalance);
+            String changeGivenInfo = timeStamp + "GIVE CHANGE: $" + MoneyHandler.doubleToString(changeGiven) + " $" + MoneyHandler.doubleToString(remainingBalance);
 
             writer.println(changeGivenInfo);
         } catch (IOException e) {

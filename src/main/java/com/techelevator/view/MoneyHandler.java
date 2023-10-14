@@ -61,19 +61,17 @@ public class MoneyHandler {
             change.put("Quarters:", quarters);
             change.put("Dimes:", dimes);
             change.put("Nickels:", nickels);
-
-            this.balance = 0;
         }
         printChange(change);
+        this.balance = 0;
     }
 
     public void printChange(Map<String,Integer>change){
-        System.out.println(System.lineSeparator());
+        System.out.println(System.lineSeparator() + "Dispensing Change");
         AsciiPrinter.printASCII("asciiface.txt", false);
-        System.out.println(System.lineSeparator()+"Change");
+        System.out.println("\n");
         for (SortedMap.Entry<String,Integer> entry: change.entrySet()){
             System.out.println(entry.getKey() + " " + entry.getValue());
-
         }
     }
 }
