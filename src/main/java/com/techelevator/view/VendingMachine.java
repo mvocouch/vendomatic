@@ -64,7 +64,10 @@ public class VendingMachine {
                 case PURCHASE_MENU_OPTION_FINISH_TRANSACTION:
                     //finishes interaction with vending machine
                     try {
+                        double changeGiven = moneyHandler.getBalance();
                         moneyHandler.makeChange();
+                        double newBalance = moneyHandler.getBalance();
+                        log.logChangeGiven(changeGiven, newBalance);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

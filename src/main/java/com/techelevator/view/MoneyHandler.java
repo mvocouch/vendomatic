@@ -4,8 +4,10 @@ import com.techelevator.customExceptions.InsufficientBalanceException;
 import com.techelevator.customExceptions.InvalidFormOfPayment;
 
 import java.text.DecimalFormat;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class MoneyHandler {
     private double balance;
@@ -20,6 +22,10 @@ public class MoneyHandler {
 
     public double getBalance() {
         return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public void addToBalance(int amount) throws InvalidFormOfPayment {
@@ -43,7 +49,7 @@ public class MoneyHandler {
     }
 
     public void makeChange(){
-        Map<String,Integer> change =new HashMap<>();
+        Map<String,Integer> change =new LinkedHashMap<>();
         double changeAmount = this.getBalance();
         if (changeAmount > 0) {
             int quarters = (int) (changeAmount / QUARTER);
@@ -55,6 +61,8 @@ public class MoneyHandler {
             change.put("Quarters:", quarters);
             change.put("Dimes:", dimes);
             change.put("Nickels:", nickels);
+
+            this.balance = 0;
         }
         printChange(change);
     }
@@ -63,10 +71,9 @@ public class MoneyHandler {
         System.out.println(System.lineSeparator());
         AsciiPrinter.printASCII("asciiface.txt", false);
         System.out.println(System.lineSeparator()+"Change");
-        for (Map.Entry<String,Integer> entry: change.entrySet()){
-            if (entry.getValue()> 0){
-                System.out.println(entry.getKey() + " " + entry.getValue());
-            }
+        for (SortedMap.Entry<String,Integer> entry: change.entrySet()){
+            System.out.println(entry.getKey() + " " + entry.getValue());
+
         }
     }
 }
