@@ -59,38 +59,6 @@ public class Inventory {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    } public void increaseItemQuantity(Map<String, Item> inventory, String locationSlot, int quantityToAdd) {
-        Item item = inventory.get(locationSlot);
-        if (item != null){
-            int currentQuantity = item.getQuantity();
-            int newQuantity = (currentQuantity+quantityToAdd);
-            if (newQuantity > MAXIMUM_QUANTITY){
-                System.out.println("QTY cannot exceed the maximum limit (" + MAXIMUM_QUANTITY + ").");
-                item.setQuantity(MAXIMUM_QUANTITY);
-            }else{
-                item.setQuantity(newQuantity);
-            }
-        } else {
-            System.out.println("Item with location slot '" + locationSlot + "' not found in inventory.");
-        }
-    }
-    public void decreaseItemQuantity(Map<String, Item> inventory, String locationSlot, int quantityToSubtract) {
-        Item item = inventory.get(locationSlot);
-        if (item != null) {
-            if (item.getQuantity() != 0) {
-                int currentQuantity = item.getQuantity();
-                int newQuantity = (currentQuantity - quantityToSubtract);
-                if (newQuantity < 0) {
-                    System.out.println("Insufficient stock of " + item.getName());
-                } else {
-                    item.setQuantity(newQuantity);
-                }
-            } else {
-                System.out.println("Sold Out");
-            }
-        } else {
-            System.out.println("Item with location slot '" + locationSlot + "' not found in inventory.");
-        }
     }
 
     public void displayItems(){

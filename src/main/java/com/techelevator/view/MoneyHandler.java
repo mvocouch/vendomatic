@@ -36,7 +36,7 @@ public class MoneyHandler {
         } else {
             throw new InsufficientBalanceException(System.lineSeparator() + "*** Insufficient balance to purchase selected item. ***");
         }
-    };
+    }
 
     public static String doubleToString(double money){
         return new DecimalFormat("0.00").format(money);

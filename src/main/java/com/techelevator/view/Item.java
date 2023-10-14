@@ -31,20 +31,10 @@ public abstract class Item {
     public String getName() {
         return name;
     }
-
     public double getPrice() {return price;}
-
     public String getItemType() {
         return itemType;
     }
-
-    public int getQuantity() {
-        return quantity;
-    }
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     public String getLocationSlot() {
         return locationSlot;
     }
