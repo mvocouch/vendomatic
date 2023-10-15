@@ -23,7 +23,7 @@ public class MoneyHandlerTest {
 
         moneyHandler.addToBalance(amountToAdd);
 
-        assertEquals(initialBalance + amountToAdd, 60);
+        assertEquals(initialBalance + amountToAdd, moneyHandler.getBalance(), 0.001);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class MoneyHandlerTest {
             moneyHandler.addToBalance(amountToAdd);
         });
 
-        assertEquals(initialBalance, moneyHandler.getBalance(),0.000);
+        assertEquals(initialBalance, moneyHandler.getBalance(),0.001);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class MoneyHandlerTest {
 
         moneyHandler.subtractFromBalance(amountToSubtract);
 
-        assertEquals(initialBalance - amountToSubtract, 8, 0.000); // Use delta for double comparison
+        assertEquals(initialBalance - amountToSubtract, moneyHandler.getBalance(), 0.001); // Use delta for double comparison
     }
 
     @Test
