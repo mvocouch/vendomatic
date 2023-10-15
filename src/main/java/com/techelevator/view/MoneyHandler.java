@@ -11,6 +11,11 @@ import java.util.SortedMap;
 
 public class MoneyHandler {
     private double balance;
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     public MoneyHandler() {
         this.balance = 0;
 
