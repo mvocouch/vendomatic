@@ -17,6 +17,10 @@ public class Inventory {
         csvFileToMap();
     }
 
+    public SortedMap<String, Item> getInventory() {
+        return inventory;
+    }
+
     public Item getItem(String slotID){
         return inventory.get(slotID);
     }

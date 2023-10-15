@@ -4,18 +4,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
 import com.techelevator.view.MoneyHandler;
 
 public class Log {
-
-    public void logDeposit(double amountDeposited, double newBalance) {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
+    public void logDeposit(double amountDeposited, double newBalance, String timestamp) {
         String logFilePath = "Log.txt";
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(logFilePath, true))) {
-            // Get the current timestamp
-            LocalDateTime timestamp = LocalDateTime.now();
-
-            // Format the deposit information
             String depositInfo = timestamp + " FEED MONEY: $" + MoneyHandler.doubleToString(amountDeposited) + " $" + MoneyHandler.doubleToString(newBalance);
 
             // Write the deposit information to the log file
@@ -24,13 +23,18 @@ public class Log {
             e.printStackTrace(); // Handle or log any file I/O errors
         }
     }
-
+    public void logDeposit(double amountDeposited, double newBalance){
+        // get current timestamp
+        String timestamp = formatter.format(LocalDateTime.now());
+        logDeposit(amountDeposited, newBalance, timestamp);
+    }
     public void logPurchase(String locationSlot, String itemName, double itemCost, double remainingBalance) {
         String logFilePath = "Log.txt";
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(logFilePath, true))) {
             // Get the current timestamp
-            LocalDateTime timestamp = LocalDateTime.now();
+            String timestamp = formatter.format(LocalDateTime.now());
+
 
             // Format the purchase information
             String purchaseInfo = timestamp + " " + locationSlot + " " + itemName + " $" + MoneyHandler.doubleToString(itemCost) + " $" + MoneyHandler.doubleToString(remainingBalance);
@@ -45,9 +49,9 @@ public class Log {
         String logFilePath = "Log.txt";
 
         try(PrintWriter writer = new PrintWriter(new FileWriter(logFilePath,true))){
-            LocalDateTime timeStamp = LocalDateTime.now();
+            String timestamp = formatter.format(LocalDateTime.now());
 
-            String changeGivenInfo = timeStamp + " GIVE CHANGE: $" + MoneyHandler.doubleToString(changeGiven) + " $" + MoneyHandler.doubleToString(remainingBalance);
+            String changeGivenInfo = timestamp + " GIVE CHANGE: $" + MoneyHandler.doubleToString(changeGiven) + " $" + MoneyHandler.doubleToString(remainingBalance);
 
             writer.println(changeGivenInfo);
         } catch (IOException e) {
