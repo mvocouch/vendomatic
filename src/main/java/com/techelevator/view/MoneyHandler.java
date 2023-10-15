@@ -3,29 +3,20 @@ package com.techelevator.view;
 import com.techelevator.customExceptions.InsufficientBalanceException;
 import com.techelevator.customExceptions.InvalidFormOfPayment;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.SortedMap;
-import java.util.TreeMap;
 
 public class MoneyHandler {
     private double balance;
-    private static final double QUARTER = .25;
-    private static final double DIME = .10;
-    private static final double NICKLE = .05;
-
     public MoneyHandler() {
         this.balance = 0;
 
     }
-
     public double getBalance() {
         return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
     }
 
     public void addToBalance(int amount) throws InvalidFormOfPayment {
@@ -48,29 +39,32 @@ public class MoneyHandler {
         return new DecimalFormat("0.00").format(money);
     }
 
-    public void makeChange(){
-        Map<String,Integer> change =new LinkedHashMap<>();
-        double changeAmount = this.getBalance();
-        if (changeAmount > 0) {
-            int quarters = (int) (changeAmount / QUARTER);
-            changeAmount %= QUARTER;
-            int dimes = (int) (changeAmount / DIME);
-            changeAmount %= DIME;
-            int nickels = (int) (changeAmount / NICKLE);
-            changeAmount %= NICKLE;
-            change.put("Quarters:", quarters);
-            change.put("Dimes:", dimes);
-            change.put("Nickels:", nickels);
-        }
+    public void makeChange() {
+        Map<String, BigDecimal> change = new LinkedHashMap<>();
+        BigDecimal changeAmount = BigDecimal.valueOf(this.getBalance());
+
+        BigDecimal QUARTER = new BigDecimal("0.25");
+        BigDecimal DIME = new BigDecimal("0.10");
+        BigDecimal NICKLE = new BigDecimal("0.05");
+
+        BigDecimal quarters = changeAmount.divide(QUARTER, 0, BigDecimal.ROUND_DOWN);
+        changeAmount = changeAmount.remainder(QUARTER);
+        BigDecimal dimes = changeAmount.divide(DIME, 0, BigDecimal.ROUND_DOWN);
+        changeAmount = changeAmount.remainder(DIME);
+        BigDecimal nickels = changeAmount.divide(NICKLE, 0, BigDecimal.ROUND_DOWN);
+
+        change.put("Quarters:", quarters);
+        change.put("Dimes:", dimes);
+        change.put("Nickels:", nickels);
+
         printChange(change);
         this.balance = 0;
     }
-
-    public void printChange(Map<String,Integer>change){
+    public void printChange(Map<String,BigDecimal>change){
         System.out.println(System.lineSeparator() + "Dispensing Change");
         AsciiPrinter.printASCII("asciiface.txt", false);
-        System.out.println("\n");
-        for (SortedMap.Entry<String,Integer> entry: change.entrySet()){
+        System.out.println("");
+        for (SortedMap.Entry<String,BigDecimal> entry: change.entrySet()){
             System.out.println(entry.getKey() + " " + entry.getValue());
         }
     }
