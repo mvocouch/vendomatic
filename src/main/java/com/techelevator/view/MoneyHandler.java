@@ -11,7 +11,7 @@ public class MoneyHandler {
     private double balance;
     private static final double QUARTER = .25;
     private static final double DIME = .10;
-    private static final double NICKLE = .05;
+    private static final double NICKEL = .05;
 
     public MoneyHandler() {
         this.balance = 0;
@@ -50,8 +50,8 @@ public class MoneyHandler {
             changeAmount %= QUARTER;
             int dimes = (int) (changeAmount / DIME);
             changeAmount %= DIME;
-            int nickels = (int) (changeAmount / NICKLE);
-            changeAmount %= NICKLE;
+            int nickels = (int) (changeAmount / NICKEL);
+            changeAmount %= NICKEL;
             change.put("Quarters:", quarters);
             change.put("Dimes:", dimes);
             change.put("Nickels:", nickels);
