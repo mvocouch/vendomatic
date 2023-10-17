@@ -28,15 +28,10 @@ public class Log {
         String timestamp = formatter.format(LocalDateTime.now());
         logDeposit(amountDeposited, newBalance, timestamp);
     }
-    public void logPurchase(String locationSlot, String itemName, double itemCost, double remainingBalance) {
+    public void logPurchase(String locationSlot, String itemName, double itemCost, double remainingBalance,String timestamp) {
         String logFilePath = "Log.txt";
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(logFilePath, true))) {
-            // Get the current timestamp
-            String timestamp = formatter.format(LocalDateTime.now());
-
-
-            // Format the purchase information
             String purchaseInfo = timestamp + " " + locationSlot + " " + itemName + " $" + MoneyHandler.doubleToString(itemCost) + " $" + MoneyHandler.doubleToString(remainingBalance);
 
             // Write the purchase information to the log file
@@ -45,17 +40,23 @@ public class Log {
             e.printStackTrace(); // Handle or log any file I/O errors
         }
     }
-    public void logChangeGiven(double changeGiven, double remainingBalance){
+    public void logPurchase(String locationSlot, String itemName, double itemCost, double remainingBalance){
+        String timestamp = formatter.format(LocalDateTime.now());
+        logPurchase(locationSlot,itemName,itemCost,remainingBalance,timestamp);
+    }
+    public void logChangeGiven(double changeGiven, double remainingBalance, String timestamp){
         String logFilePath = "Log.txt";
 
         try(PrintWriter writer = new PrintWriter(new FileWriter(logFilePath,true))){
-            String timestamp = formatter.format(LocalDateTime.now());
-
             String changeGivenInfo = timestamp + " GIVE CHANGE: $" + MoneyHandler.doubleToString(changeGiven) + " $" + MoneyHandler.doubleToString(remainingBalance);
 
             writer.println(changeGivenInfo);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void logChangeGiven(double changeGiven, double remainingBalance){
+        String timestamp = formatter.format(LocalDateTime.now());
+        logChangeGiven(changeGiven,remainingBalance,timestamp);
     }
 }
