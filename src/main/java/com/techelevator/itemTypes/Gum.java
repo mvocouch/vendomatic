@@ -1,7 +1,7 @@
 package com.techelevator.itemTypes;
 
-import com.techelevator.view.AsciiPrinter;
-import com.techelevator.view.Item;
+import com.techelevator.mainClasses.AsciiPrinter;
+import com.techelevator.mainClasses.Item;
 
 public class Gum extends Item {
 

@@ -1,4 +1,4 @@
-package com.techelevator.view;
+package com.techelevator.mainClasses;
 
 import com.techelevator.customExceptions.OutOfStockException;
 
@@ -63,7 +63,4 @@ public abstract class Item {
                 " | " + itemType +
                 " | Stock: " + quantity;
     }
-
-
-
 }

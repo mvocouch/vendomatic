@@ -1,7 +1,7 @@
 package com.techelevator.itemTypes;
 
-import com.techelevator.view.AsciiPrinter;
-import com.techelevator.view.Item;
+import com.techelevator.mainClasses.AsciiPrinter;
+import com.techelevator.mainClasses.Item;
 
 public class Candy extends Item {
     public Candy(String locationSlot, String name, double price, String itemType, int quantity) {

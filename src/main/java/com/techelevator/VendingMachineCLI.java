@@ -1,7 +1,7 @@
 package com.techelevator;
 
-import com.techelevator.view.AsciiPrinter;
-import com.techelevator.view.VendingMachine;
+import com.techelevator.mainClasses.AsciiPrinter;
+import com.techelevator.mainClasses.VendingMachine;
 
 public class VendingMachineCLI {
 

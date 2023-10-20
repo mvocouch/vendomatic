@@ -1,4 +1,4 @@
-package com.techelevator.view;
+package com.techelevator.mainClasses;
 
 import com.techelevator.itemTypes.Candy;
 import com.techelevator.itemTypes.Chip;
@@ -42,6 +42,8 @@ public class Inventory {
                     int quantity = MAXIMUM_QUANTITY;
 
                     Item item = null;
+
+                    //Brandish put this part in to make the csvFileToMap compatible with the abstract implementation Item
                     switch(itemType){
                         case "Candy":
                             item = new Candy(parts, quantity);

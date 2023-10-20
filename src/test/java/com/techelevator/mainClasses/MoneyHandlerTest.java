@@ -1,4 +1,4 @@
-package com.techelevator.view;
+package com.techelevator.mainClasses;
 
 import com.techelevator.customExceptions.InvalidFormOfPayment;
 import com.techelevator.customExceptions.InsufficientBalanceException;

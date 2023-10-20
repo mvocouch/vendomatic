@@ -1,13 +1,10 @@
-package com.techelevator.view;
+package com.techelevator.mainClasses;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-
-import com.techelevator.view.MoneyHandler;
 
 public class Log {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");

@@ -1,4 +1,4 @@
-package com.techelevator.view;
+package com.techelevator.mainClasses;
 
 import com.techelevator.itemTypes.Candy;
 import org.junit.Assert;
